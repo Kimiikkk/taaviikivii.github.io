@@ -162,3 +162,27 @@ footer {
     transform: scale(1.08);
     filter: brightness(1.1);
 }
+
+.email-link{
+    background: linear-gradient(
+        135deg,
+        #ffb3c6,
+        #ff8fab,
+        #ff758f
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: opacity 0.3s ease;
+}
+
+.email-link:hover{
+    opacity: 0.8;
+}
