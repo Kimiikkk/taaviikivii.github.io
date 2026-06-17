@@ -64,7 +64,6 @@ body {
         0 0 10px rgba(255, 117, 143, 0.35);
 }
 
-
 h1 {
     font-family: "Cormorant Garamond", serif;
     font-style: italic;
@@ -75,6 +74,31 @@ h1 {
     letter-spacing: -2px;
 
     margin-bottom: 0.25rem;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+h1:hover {
+
+    background: linear-gradient(
+        135deg,
+        #ff8fab 0%,
+        #ff4d6d 50%,
+        #c9184a 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 0 12px rgba(255, 77, 109, 0.15);
+
+    transform: scale(1.02);
 }
 
 .subtitle {
@@ -195,18 +219,24 @@ body.dark #theme-toggle:hover {
 
     box-shadow: none;
 }
-
-.logo:hover{
-    transform: scale(1.08);
-    filter: brightness(1.1);
+ 
+.site-header{
+    position: fixed;
+    top: 20px;
+    left: 25px;
+    z-index: 1000;
 }
 
-.email-link{
+.logo{
+    font-size: 2.6rem;
+    font-weight: 800;
+    font-family: Georgia, serif;
+
     background: linear-gradient(
         135deg,
-        #ffb3c6,
-        #ff8fab,
-        #ff758f
+        #ff9a9e 0%,
+        #ff4d6d 50%,
+        #ff758f 100%
     );
 
     -webkit-background-clip: text;
@@ -214,13 +244,19 @@ body.dark #theme-toggle:hover {
 
     color: transparent;
 
-    font-weight: 600;
+    text-shadow:
+        0 0 20px rgba(255, 77, 109, 0.25);
 
-    text-decoration: none;
+    cursor: default;
 
-    transition: opacity 0.3s ease;
+    user-select: none;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
 }
 
-.email-link:hover{
-    opacity: 0.8;
+.logo:hover{
+    transform: scale(1.08);
+    filter: brightness(1.1);
 }
