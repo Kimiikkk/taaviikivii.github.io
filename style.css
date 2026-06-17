@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #faf8fc;
+    --text: #2f2f2f;
+    --secondary: #666;
+}
+
+body.dark {
+    --bg: #111111;
+    --text: #f4f4f4;
+    --secondary: #b0b0b0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: Georgia, serif;
+
+    min-height: 100vh;
+
+    transition: 0.3s;
+}
+
+.container {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 5rem 1.5rem;
+
+    text-align: center;
+}
+
+.profile-pic {
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--secondary);
+
+    margin-bottom: 3rem;
+}
+
+.about {
+    text-align: left;
+
+    line-height: 1.9;
+
+    font-size: 1.1rem;
+}
+
+.about p {
+    margin-bottom: 1.5rem;
+}
+
+.links {
+    margin-top: 2rem;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 2rem;
+}
+
+.links a {
+    text-decoration: none;
+
+    color: var(--text);
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 5rem;
+
+    color: var(--secondary);
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 1rem;
+}
+
+#theme-toggle {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+}
+
+.site-header{
+    position: fixed;
+    top: 20px;
+    left: 25px;
+    z-index: 1000;
+}
+
+.logo{
+    font-size: 2.6rem;
+    font-weight: 800;
+    font-family: Georgia, serif;
+
+    background: linear-gradient(
+        135deg,
+        #ff9a9e 0%,
+        #ff4d6d 50%,
+        #ff758f 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 0 20px rgba(255, 77, 109, 0.25);
+
+    cursor: default;
+
+    user-select: none;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.logo:hover{
+    transform: scale(1.08);
+    filter: brightness(1.1);
+}
