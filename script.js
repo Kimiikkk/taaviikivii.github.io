@@ -34,7 +34,7 @@ toggleBtn.addEventListener("click", () => {
     );
 
     toggleBtn.textContent =
-        darkMode ? "🌙" : "☀";
+        darkMode ? "🌙" : "☀️";
 });
 
 
