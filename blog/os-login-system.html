@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+    Building a Persistent Credential System in a Custom Operating System
+</title>
+
+<link rel="stylesheet" href="blog.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="logo">K</div>
+</header>
+
+<button id="theme-toggle">☀️</button>
+
+<div class="container article-container">
+
+    <a href="index.html" class="back">
+        ← back to blog
+    </a>
+
+    <h1>
+        Building a Persistent Credential System in a Custom Operating System
+    </h1>
+
+    <p class="subtitle">
+        June 2026 · Operating Systems · x86 Assembly
+    </p>
+
+    <p>
+        As part of my exploration into operating system
+        development, I set out to implement a simple credential
+        system directly within a custom x86 operating system.
+        The objective was to introduce basic user authentication
+        during the boot process and gain a deeper understanding
+        of how persistent data can be managed in a low-level
+        environment.
+    </p>
+
+    <p>
+        Unlike application development, operating system
+        development provides no access to libraries, databases,
+        or operating system services. Every component must be
+        designed and implemented from scratch, making even a
+        basic login system an interesting engineering challenge.
+    </p>
+
+    <h2>Project Goals</h2>
+
+    <ul>
+        <li>Allow a user to create an account on first boot</li>
+        <li>Store credentials persistently on disk</li>
+        <li>Detect whether an account already exists</li>
+        <li>Present a login screen on subsequent boots</li>
+        <li>Authenticate users before granting access</li>
+    </ul>
+
+    <h2>Design Approach</h2>
+
+    <p>
+        The system reserves a dedicated disk sector for
+        credential storage. A flag byte is used to indicate
+        whether valid account information exists.
+    </p>
+
+    <p>
+        During startup, the bootloader reads this sector and
+        determines which workflow should be displayed. If no
+        account exists, the system enters account creation mode.
+        If an account has already been created, the system
+        presents the login screen.
+    </p>
+
+    <p>
+        This lightweight approach allows the operating system to
+        maintain state across reboots while remaining simple and
+        efficient.
+    </p>
+
+    <h2>A Persistence Challenge</h2>
+
+    <p>
+        One of the first challenges I encountered was preserving
+        account data during development.
+    </p>
+
+    <p>
+        Rebuilding the operating system image frequently
+        overwrote the credential sector, causing stored account
+        information to be lost. To solve this problem, I
+        developed a small build workflow that automatically
+        preserves credential data between builds.
+    </p>
+
+    <p>
+        The workflow extracts the credential sector before
+        rebuilding the operating system image and restores it
+        afterwards. This allows account information to survive
+        development iterations and significantly improves the
+        testing experience.
+    </p>
+
+    <h2>Technical Takeaways</h2>
+
+    <ul>
+        <li>The x86 boot process</li>
+        <li>BIOS-level disk access</li>
+        <li>Low-level storage management</li>
+        <li>Memory addressing and data structures</li>
+        <li>User authentication fundamentals</li>
+        <li>Persistent state management without a filesystem</li>
+    </ul>
+
+    <p>
+        Most importantly, this project demonstrated how features
+        that appear straightforward at the application level
+        become significantly more complex when implemented close
+        to the hardware.
+    </p>
+
+    <h2>Looking Ahead</h2>
+
+    <p>
+        This credential system represents one of the
+        foundational components of a larger operating system
+        project.
+    </p>
+
+    <p>
+        Future development will focus on kernel improvements,
+        enhanced user interaction, storage abstractions, and
+        additional system services.
+    </p>
+
+    <p>
+        Operating system development has been one of the most
+        challenging and rewarding areas of programming I have
+        explored so far, and this project was an important step
+        in that journey.
+    </p>
+
+</div>
+
+<script>
+
+    const toggleBtn =
+        document.getElementById("theme-toggle");
+
+    if (localStorage.getItem("theme") === "dark") {
+
+        document.body.classList.add("dark");
+
+        toggleBtn.innerHTML = "🌙";
+
+    } else {
+
+        toggleBtn.innerHTML = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        const darkMode =
+            document.body.classList.contains("dark");
+
+        localStorage.setItem(
+            "theme",
+            darkMode ? "dark" : "light"
+        );
+
+        toggleBtn.innerHTML =
+            darkMode ? "🌙" : "☀️";
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
